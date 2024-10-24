@@ -51,29 +51,37 @@ export default async function MovieDetailsPage({
   return (
     <div className="container mx-auto px-4 py-8 text-gray-900 dark:text-gray-100">
       {/* Movie Poster and Info */}
-      <div className="lg:flex lg:gap-8 lg:items-start mb-12">
-        <div className="lg:w-1/3 w-full mt-6 lg:mt-0">
+
+      <div className="lg:flex lg:gap-8 lg:items-start mb-12 bg-gradient-to-br from-gray-800 via-gray-900 to-black p-6 rounded-lg shadow-xl">
+        <div className="lg:w-1/3 w-full mt-6 lg:mt-0 relative">
           <Image
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}
             width={500}
             height={750}
-            className="rounded-lg shadow-lg object-cover"
+            className="rounded-lg shadow-2xl object-cover"
           />
         </div>
-        <div className="lg:w-2/3 w-full">
+        <div className="lg:w-2/3 w-full lg:pl-8 pl-0">
           <div className="mb-4">
-            <h1 className="text-4xl font-extrabold mb-2">{movie.title}</h1>
-            <p className="text-lg text-gray-500 dark:text-gray-400">
-              {new Date(movie.release_date).getFullYear()} -{" "}
-              {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}m
+            <h1 className="text-5xl font-extrabold mb-4 text-white">
+              {movie.title}
+            </h1>
+            <p className="text-lg text-gray-300 dark:text-gray-400 flex items-center space-x-4">
+              <span>{new Date(movie.release_date).getFullYear()}</span>
+              <span>•</span>
+              <span>
+                {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}m
+              </span>
             </p>
           </div>
           <div className="mb-6">
-            <h4 className="font-semibold text-lg">GENRES</h4>
-            <p>{movie.genres.map((genre: Genre) => genre.name).join(", ")}</p>
+            <h4 className="font-semibold text-xl text-gray-300">Genres</h4>
+            <p className="text-white">
+              {movie.genres.map((genre: Genre) => genre.name).join(", ")}
+            </p>
           </div>
-          <p className="mb-8 leading-relaxed">{movie.overview}</p>
+          <p className="mb-8 leading-relaxed text-gray-200">{movie.overview}</p>
 
           {/* Use the AddToWatchlistButton client component */}
           <MovieDetailsClient
