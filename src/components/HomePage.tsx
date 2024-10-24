@@ -23,7 +23,10 @@ export default function HomePage() {
   const [query, setQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
 
-  const { data, error } = useSWR(`/api/movies?page=${page}&query=${query}`, fetcher);
+  const { data, error } = useSWR(
+    `/api/movies?page=${page}&query=${query}`,
+    fetcher
+  );
 
   // Handle data fetching and update movies list
   useEffect(() => {
@@ -57,7 +60,10 @@ export default function HomePage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 100
+      ) {
         if (!loading && !isSearching) loadMoreMovies(); // Load more movies if not searching
       }
     };
@@ -70,7 +76,9 @@ export default function HomePage() {
 
   // Show error message if fetching fails
   if (error)
-    return <div className="text-center text-red-500">Failed to load movies</div>;
+    return (
+      <div className="text-center text-red-500">Failed to load movies</div>
+    );
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -90,10 +98,8 @@ export default function HomePage() {
           Search
         </button>
       </form>
-
       {/* Loading State */}
       {loading && <Loader />} {/* Show custom loader when loading */}
-
       {/* Movie List */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {movies.map((movie: Movie) => (
@@ -116,7 +122,6 @@ export default function HomePage() {
           </div>
         ))}
       </div>
-
       {/* Load More Button (optional if infinite scroll) */}
       {!loading && !isSearching && (
         <button

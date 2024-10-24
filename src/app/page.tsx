@@ -5,6 +5,7 @@ import axios from "axios";
 import useSWR from "swr";
 import Image from "next/image";
 import Loader from "@/components/Loader"; // Import the Loader component
+import Link from "next/link";
 
 type Movie = {
   id: number;
@@ -99,23 +100,25 @@ export default function HomePage() {
       {/* Movie List */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {movies.map((movie: Movie) => (
-          <div key={movie.id} className="movie-item text-center">
-            <div className="relative w-full h-[400px] transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-              <Image
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-lg shadow-md"
-              />
+          <Link href={`/movies/${movie.id}`} key={movie.id}>
+            <div className="movie-item text-center">
+              <div className="relative w-full h-[400px] transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg shadow-md"
+                />
+              </div>
+              <h3 className="mt-2 font-semibold text-gray-800 dark:text-white">
+                {movie.title}
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {movie.release_date}
+              </p>
             </div>
-            <h3 className="mt-2 font-semibold text-gray-800 dark:text-white">
-              {movie.title}
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              {movie.release_date}
-            </p>
-          </div>
+          </Link>
         ))}
       </div>
       {/* Loading State */}
