@@ -4,14 +4,21 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link"; // Import Link for redirection
 
+// Define the Movie interface
+interface Movie {
+  movieId: string;
+  movieTitle: string;
+  moviePosterPath: string;
+}
+
 // Helper function to get the watchlist from localStorage
-const getWatchlist = () => {
+const getWatchlist = (): Movie[] => {
   const watchlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
   return watchlist;
 };
 
 export default function WatchlistPage() {
-  const [watchlistMovies, setWatchlistMovies] = useState<any[]>([]);
+  const [watchlistMovies, setWatchlistMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
     setWatchlistMovies(getWatchlist());

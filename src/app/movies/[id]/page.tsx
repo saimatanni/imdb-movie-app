@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { CastMember, Genre, Movie, Recommendation } from "@/types/movie";
+import { CastMember, Genre, Recommendation } from "@/types/movie";
 
 import MovieDetailsClient from "@/components/MovieDetailsClient";
+import Link from "next/link";
 
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const TMDB_BASE_URL = process.env.TMDB_BASE_URL;
@@ -120,20 +121,26 @@ export default async function MovieDetailsPage({
       </div>
 
       {/* Recommendations Section */}
+    
       <div className="mb-12">
         <h2 className="text-3xl font-bold mb-6">Recommendations</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
           {recommendations.results.slice(0, 5).map((rec: Recommendation) => (
-            <div key={rec.id} className="text-center">
-              <Image
-                src={`https://image.tmdb.org/t/p/w500${rec.poster_path}`}
-                alt={rec.title}
-                width={200}
-                height={300}
-                className="rounded-lg shadow-lg"
-              />
-              <p className="mt-2 font-semibold">{rec.title}</p>
-              <p className="text-sm">{rec.release_date}</p>
+            <div
+              key={rec.id}
+              className="text-center cursor-pointer transition transform hover:scale-105"
+            >
+              <Link href={`/movies/${rec.id}`} passHref>
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500${rec.poster_path}`}
+                  alt={rec.title}
+                  width={200}
+                  height={300}
+                  className="rounded-lg shadow-lg hover:shadow-xl"
+                />
+                <p className="mt-2 font-semibold">{rec.title}</p>
+                <p className="text-sm">{rec.release_date}</p>
+              </Link>
             </div>
           ))}
         </div>

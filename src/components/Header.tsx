@@ -1,8 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
-import Link from 'next/link';
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import Link from "next/link";
+
+import { IoMdSunny } from "react-icons/io";
+import { IoMoon } from "react-icons/io5";
 
 // Helper function to get wishlist count from localStorage
 const getWishlistCount = () => {
@@ -22,9 +25,6 @@ export default function Header() {
   }, []);
 
   // Function to update the wishlist count
-  const updateWishlistCount = () => {
-    setWishlistCount(getWishlistCount());
-  };
 
   if (!mounted) return null;
 
@@ -38,7 +38,10 @@ export default function Header() {
 
         {/* Navigation Links */}
         <nav className="flex space-x-6">
-          <Link href="/" className="text-gray-800 dark:text-white hover:underline">
+          <Link
+            href="/"
+            className="text-gray-800 dark:text-white hover:underline"
+          >
             Home
           </Link>
         </nav>
@@ -64,7 +67,7 @@ export default function Header() {
             </button>
           </Link>
           {wishlistCount > 0 && (
-            <span className="absolute top-0 right-0 block h-5 w-5 rounded-full bg-red-600 text-white text-xs flex items-center justify-center">
+            <span className="absolute top-0 right-0  h-5 w-5 rounded-full bg-red-600 text-white text-xs flex items-center justify-center">
               {wishlistCount}
             </span>
           )}
@@ -72,39 +75,13 @@ export default function Header() {
 
         {/* Dark Mode Toggle */}
         <button
-          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           className="bg-gray-200 dark:bg-gray-700 p-2 rounded-full"
         >
-          {theme === 'dark' ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 text-yellow-300"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 3v1.5M12 19.5V21M4.222 4.222l1.061 1.06M17.657 17.657l1.061 1.061M3 12h1.5M19.5 12H21M4.222 19.778l1.061-1.06M17.657 6.343l1.061-1.061"
-              />
-            </svg>
+          {theme === "dark" ? (
+            <IoMdSunny className="text-yellow-500 text-lg" />
           ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 text-gray-800 dark:text-white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21.752 15.002A9.718 9.718 0 0112.002 21c-5.351 0-9.719-4.366-9.719-9.719a9.719 9.719 0 016.2-9.135 0.75 0.75 0 011.054 0.759c-.141 3.621 1.417 7.149 4.157 9.127 2.74 1.978 6.15 2.335 9.065 1.22a0.75 0.75 0 01.993.808z"
-              />
-            </svg>
+            <IoMoon className="text-lg text-gray-600" />
           )}
         </button>
       </div>
