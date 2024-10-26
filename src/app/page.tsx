@@ -30,8 +30,13 @@ export default function HomePage() {
     { revalidateOnFocus: false } // Prevent refetch on window focus
   );
 
-  const { register, watch, formState: { errors } } = useForm<{ query: string }>();
+  // const { register, watch, formState: { errors } } = useForm<{ query: string }>();
+// Enable onChange mode to show errors immediately when typing
+const { register, watch, formState: { errors } } = useForm<{ query: string }>({
+  mode: "onChange",
+});
 
+// const watchedQuery = watch("query", "");
   const watchedQuery = watch("query", "");
 
   // Update movies based on new data
@@ -82,14 +87,14 @@ export default function HomePage() {
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Search Bar */}
-      <div className="flex justify-center mb-8">
+      <div className="flex justify-center mb-8 flex-col items-center">
         <input
           type="text"
           {...register("query", { minLength: 3 })}
           className="border border-gray-300 rounded-md p-2 w-80 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
           placeholder="Search for movies..."
         />
-        {errors.query && <span className="text-red-500">Minimum 3 characters required</span>}
+        {errors.query && <span className="text-yellow-500">Minimum 3 characters required</span>}
       </div>
 
       {/* Movie List */}

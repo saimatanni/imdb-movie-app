@@ -16,13 +16,13 @@ const getWishlistCount = () => {
 export default function Header() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [wishlistCount, setWishlistCount] = useState(0);
+
 
   const { watchlist, addToWatchlist } = useWatchlist();
  // Ensure that the component is mounted before applying the theme (fixes SSR issue)
  useEffect(() => {
   setMounted(true);
-  setWishlistCount(getWishlistCount()); // Fetch wishlist count on mount
+  
   addToWatchlist(getWishlistCount())
 }, []);
 

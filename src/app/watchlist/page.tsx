@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link"; // Import Link for redirection
-import AddToWatchlistButton from "@/components/AddToWatchlistButton";
+
 import { useWatchlist } from "@/context/WatchlistContext";
 
 // Define the Movie interface
