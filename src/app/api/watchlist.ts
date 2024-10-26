@@ -1,4 +1,4 @@
-let watchlist = [];
+let watchlist: string[] = [];
 
 export const addToWatchlist = (movieId: string) => {
   if (!watchlist.includes(movieId)) {
