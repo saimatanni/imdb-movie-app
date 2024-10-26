@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IMDB Movie Search App
+
+This is a movie search and details application built with Next.js 13/14, utilizing the TMDB (The Movie Database) API. The app allows users to search for movies, view movie details, and explore other related information. The application leverages advanced tools and modern web development practices to deliver a responsive, user-friendly experience.
+
+## Features
+
+- **Movie Search and Details**: Search for movies and view detailed information about each movie.
+- **Responsive Design**: Built with Tailwind CSS for a responsive and adaptive UI.
+- **Dark Mode**: Theme switching enabled via `next-themes`.
+- **Optimized Data Fetching**: Utilizes SWR for efficient data fetching and caching.
+- **Form Validation**: Uses `react-hook-form` for managing and validating search inputs.
+- **TypeScript Support**: Strongly typed codebase for improved maintainability.
+- **Debounced Search**: Implemented with Lodash to prevent excessive API calls.
+
+## Tech Stack
+
+- **Next.js** 14
+- **React** 18
+- **TypeScript**
+- **Tailwind CSS**
+- **Axios** for HTTP requests
+- **SWR** for data fetching and caching
+- **React Hook Form** for form management and validation
+- **Lodash** for utility functions (e.g., debouncing search)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 20 or higher
+- NPM 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
+   
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+   ```bash
+   git clone https://github.com/saimatanni/imdb-movie-app.git
 
-To learn more about Next.js, take a look at the following resources:
+2. Navigate into the project directory:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   cd imdb-movie-app
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Install dependencies:
 
-## Deploy on Vercel
+   ```bash
+   npm install
+4.Create an .env file in the root directory and add your TMDB API key:
+ - TMDB_API_KEY=your_api_key
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. To start the development server, use:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   npm run dev
+
+
+---
+Design and Developed with :heart: by **Shaima Alam Tanni**.
+
+ 
