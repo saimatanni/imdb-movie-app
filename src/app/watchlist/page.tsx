@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link"; // Import Link for redirection
+import AddToWatchlistButton from "@/components/AddToWatchlistButton";
+import { useWatchlist } from "@/context/WatchlistContext";
 
 // Define the Movie interface
 interface Movie {
@@ -19,7 +21,7 @@ const getWatchlist = (): Movie[] => {
 
 export default function WatchlistPage() {
   const [watchlistMovies, setWatchlistMovies] = useState<Movie[]>([]);
-
+  const {  addToWatchlist,  } = useWatchlist();
   useEffect(() => {
     setWatchlistMovies(getWatchlist());
   }, []);
@@ -28,6 +30,7 @@ export default function WatchlistPage() {
     const updatedWatchlist = watchlistMovies.filter((movie) => movie.movieId !== movieId);
     setWatchlistMovies(updatedWatchlist);
     localStorage.setItem("wishlist", JSON.stringify(updatedWatchlist)); // Update localStorage
+    addToWatchlist(updatedWatchlist?.length)
   };
 
   if (watchlistMovies.length === 0) {

@@ -1,4 +1,6 @@
-"use client"; // Mark this component as a Client Component
+
+
+"use client";
 
 import AddToWatchlistButton from "@/components/AddToWatchlistButton";
 
