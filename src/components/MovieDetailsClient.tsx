@@ -17,14 +17,12 @@ export default function MovieDetailsClient({
 }: MovieDetailsClientProps) {
   return (
     <div>
-      {/* The interactive AddToWatchlistButton component */}
+   
       <AddToWatchlistButton
         movieId={movieId}
         movieTitle={movieTitle}
         moviePosterPath={moviePosterPath}
-        onUpdateWishlist={() => {
-          // Optionally handle any wishlist updates here
-        }}
+        
       />
     </div>
   );

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 
-/* Add a transition for smooth dark mode change */
+
 html {
   scroll-behavior: smooth;
   transition: background-color 0.3s, color 0.3s;

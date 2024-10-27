@@ -4,19 +4,19 @@ import { createContext, useContext, useState, ReactNode } from "react";
 
 // Update the type definitions
 type WatchlistContextType = {
-  watchlist: number; // Change watchlist to be a number (the count)
-  addToWatchlist: (count: number) => void; // Accepts a number instead of a Movie object
+  watchlist: number;
+  addToWatchlist: (count: number) => void; 
 };
 
 const WatchlistContext = createContext<WatchlistContextType | undefined>(undefined);
 
 export const WatchlistProvider = ({ children }: { children: ReactNode }) => {
-  const [watchlist, setWatchlist] = useState(0); // Initialize watchlist as a count (number)
+  const [watchlist, setWatchlist] = useState(0); 
 
   // Updated addToWatchlist to accept a number as the count
   const addToWatchlist = (count: number) => {
     console.log("count", count);
-    setWatchlist(count); // Set watchlist to the provided count
+    setWatchlist(count); 
   };
 
   return (

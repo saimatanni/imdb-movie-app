@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link"; // Import Link for redirection
+import Link from "next/link"; 
 
 import { useWatchlist } from "@/context/WatchlistContext";
 
@@ -43,7 +43,6 @@ export default function WatchlistPage() {
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {watchlistMovies.map((movie) => (
           <div key={movie.movieId} className="text-center group">
-            {/* Wrap image and title in Link for redirection */}
             <Link href={`/movies/${movie.movieId}`} passHref>
               <div className="block">
                 <div className="relative w-full h-[300px] transition-transform duration-300 hover:scale-105">

@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
@@ -7,7 +6,7 @@ import { IoMdSunny } from "react-icons/io";
 import { IoMoon } from "react-icons/io5";
 import { useWatchlist } from "@/context/WatchlistContext";
 
-// Helper function to get wishlist count from localStorage
+
 const getWishlistCount = () => {
   const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
   return wishlist.length;
@@ -26,7 +25,7 @@ export default function Header() {
   addToWatchlist(getWishlistCount())
 }, []);
 
-// Function to update the wishlist count
+
 
 if (!mounted) return null;
 
@@ -34,7 +33,7 @@ if (!mounted) return null;
   return (
     <header className="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-md z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Logo */}
+  
         <Link href="/" className="text-2xl font-extrabold text-white bg-yellow-500 px-4 py-1 rounded-md">
           IMDB
         </Link>

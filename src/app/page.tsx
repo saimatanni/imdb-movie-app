@@ -30,13 +30,12 @@ export default function HomePage() {
     { revalidateOnFocus: false } // Prevent refetch on window focus
   );
 
-  // const { register, watch, formState: { errors } } = useForm<{ query: string }>();
-// Enable onChange mode to show errors immediately when typing
+
 const { register, watch, formState: { errors } } = useForm<{ query: string }>({
   mode: "onChange",
 });
 
-// const watchedQuery = watch("query", "");
+
   const watchedQuery = watch("query", "");
 
   // Update movies based on new data
@@ -118,8 +117,8 @@ const { register, watch, formState: { errors } } = useForm<{ query: string }>({
         ))}
       </div>
       
-      {/* Loading State */}
-      {loading && <Loader />} {/* Use Loader component when loading */}
+     
+      {loading && <Loader />} 
     </div>
   );
 }

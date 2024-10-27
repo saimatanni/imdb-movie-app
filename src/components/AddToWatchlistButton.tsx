@@ -1,14 +1,11 @@
 "use client";
-
-
 import { useWatchlist } from "@/context/WatchlistContext";
 import { useState, useEffect } from "react";
-
 type Props = {
   movieId: string;
   movieTitle: string;
-  moviePosterPath: string; // Ensure this is the correct path
-  onUpdateWishlist: () => void;
+  moviePosterPath: string; 
+
 };
 
 interface Movie {
@@ -21,10 +18,10 @@ export default function AddToWatchlistButton({
   movieId,
   movieTitle,
   moviePosterPath,
-  onUpdateWishlist,
+
 }: Props) {
   const [isAdded, setIsAdded] = useState(false);
-  const { addToWatchlist, } = useWatchlist();
+  const { addToWatchlist } = useWatchlist();
   useEffect(() => {
     const watchlist: Movie[] = JSON.parse(localStorage.getItem("wishlist") || "[]");
     if (watchlist.some((movie) => movie.movieId === movieId)) {
@@ -38,21 +35,20 @@ export default function AddToWatchlistButton({
     if (isAdded) {
       // Remove from watchlist
       watchlist = watchlist.filter((movie) => movie.movieId !== movieId);
-      addToWatchlist(watchlist.length)
+   
 
       localStorage.setItem("wishlist", JSON.stringify(watchlist));
       setIsAdded(false);
     } else {
-      // Add to watchlist (ensure poster path is stored correctly)
+    
       watchlist.push({ movieId, movieTitle, moviePosterPath });
 
-      addToWatchlist(watchlist.length)
+    
       localStorage.setItem("wishlist", JSON.stringify(watchlist));
       setIsAdded(true);
     }
-
-    // Trigger parent component to update wishlist count
-    onUpdateWishlist();
+    addToWatchlist(watchlist.length)
+  
   };
 
   return (
